@@ -1,0 +1,25 @@
+{
+  "name": "goat library",
+  "version": "1.0.0",
+  "description": "goat!!!!",
+  "keywords": "goat, car, fast",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/WPI-FSAE/goatlibrary.git"
+  },
+  "authors":
+  [
+    {
+      "name": "evelyn maude",
+      "email": "emaude@wpi.edu",
+      "url": "https://evelynmau.de"
+    }
+  ],
+  "dependencies": {
+    "SD": "^2.0.0",
+    "Time": "^1.6.1"
+  },
+  "frameworks": "*",
+  "platforms": "*"
+}
