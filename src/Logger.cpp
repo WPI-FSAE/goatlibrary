@@ -18,7 +18,7 @@ void Logger::setup_logging(std::string category, std::string header) {
   Serial.println("sd card initialized");
 
   char buf[40];
-  snprintf(buf, 40, "%s_%d-%d-%d_%2d:%2d.log", category.c_str(), year(), month(), day(), hour(), minute());
+  snprintf(buf, 40, "%s_%d-%d-%d_%2d-%2d.log", category.c_str(), year(), month(), day(), hour(), minute());
   filename = std::string(buf);
 
   this->log("good morning! (i reset)");
