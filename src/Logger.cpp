@@ -1,9 +1,11 @@
-#include <Logger.h>
+#include "Logger.h"
 #include <TimeLib.h>
+
 // Open sourced code found from
 // https://www.arduinolibraries.info/libraries/sd
 // SD-1.2.4.zip -> examples -> file read write
 void Logger::setup_logging(std::string category, std::string header) {
+  setSyncProvider((time_t(*)()) Teensy3Clock.get);
   Serial.println("Initializing SD card...");
 
   // see if the card is present and can be initialized:
