@@ -11,6 +11,7 @@ void Logger::setup_logging(std::string category, std::string header) {
   // see if the card is present and can be initialized:
   if (!SD.begin(BUILTIN_SDCARD)) {
     Serial.println("Card failed, or not present");
+    this->failed = true;
     // don't do anything more:
     return;
   }
@@ -26,14 +27,16 @@ void Logger::setup_logging(std::string category, std::string header) {
 }
 
 void Logger::write(std::string msg) {
-  txtFile = SD.open(filename.c_str(), FILE_WRITE);
-  if (!txtFile) {
-    Serial.print("error opening ");
-    Serial.println(filename.c_str());
-    return;
+  if (this->failed == true) {
+    txtFile = SD.open(filename.c_str(), FILE_WRITE);
+    if (!txtFile) {
+      Serial.print("error opening ");
+      Serial.println(filename.c_str());
+      return;
+    }
+    txtFile.write(msg.c_str(), msg.length());
+    txtFile.close();
   }
-  txtFile.write(msg.c_str(), msg.length());
-  txtFile.close();
 }
 
 void Logger::log(std::string msg) {
