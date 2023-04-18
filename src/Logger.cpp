@@ -17,6 +17,7 @@ void Logger::setup_logging(std::string category, std::string header) {
   }
 
   Serial.println("sd card initialized");
+  this->failed = false;
 
   char buf[40];
   snprintf(buf, 40, "%s_%04d-%02d-%02d_%02d-%02d.log", category.c_str(), year(), month(), day(), hour(), minute());
@@ -27,7 +28,7 @@ void Logger::setup_logging(std::string category, std::string header) {
 }
 
 void Logger::write(std::string msg) {
-  if (this->failed == true) {
+  if (this->failed == false) {
     txtFile = SD.open(filename.c_str(), FILE_WRITE);
     if (!txtFile) {
       Serial.print("error opening ");

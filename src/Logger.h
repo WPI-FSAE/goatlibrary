@@ -5,7 +5,7 @@
 
 class Logger {
 private:
-  bool failed = false;
+  bool failed = true;
   std::string filename = "null.log";
   File txtFile;
 
